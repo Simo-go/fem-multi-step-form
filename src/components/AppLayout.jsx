@@ -1,5 +1,5 @@
 function AppLayout() {
-  return <div></div>;
+  return <div className="flex justify-center items-center"></div>;
 }
 
 export default AppLayout;
