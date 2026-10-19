@@ -4,10 +4,24 @@ const MultiStepFormContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MultiStepFormProvider({ children }) {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  function handleIncrementStep() {
+    setCurrentStep((step) => step + 1);
+  }
+
+  function handleDecrementStep() {
+    setCurrentStep((step) => step - 1);
+  }
 
   return (
-    <MultiStepFormContext value={{ currentStep }}>
+    <MultiStepFormContext
+      value={{
+        currentStep,
+        handleIncrementStep,
+        handleDecrementStep,
+      }}
+    >
       {children}
     </MultiStepFormContext>
   );

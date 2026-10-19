@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 function StepItem({ stepNumber = 1, children }) {
   const { currentStep } = useMultiStepFormContext();
-  const isActive = stepNumber === currentStep;
+  const isActive = stepNumber === currentStep + 1;
 
   return (
     <li className="flex gap-4">

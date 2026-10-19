@@ -4,11 +4,13 @@ import StepItem from "./StepItem";
 import StepsList from "./StepsList";
 import StepsProgress from "./StepsProgress";
 import { MultiStepFormProvider } from "../contexts/MultiStepFormContext";
+import FormNavigation from "./FormNavigation";
+import { Outlet } from "react-router";
 
 function MultiStepForm() {
   return (
     <MultiStepFormProvider>
-      <div className="bg-white px-6 py-8">
+      <div className="contents rounded-[.625rem]">
         <StepsProgress>
           <StepsList>
             <StepItem stepNumber={1}>Your Info</StepItem>
@@ -17,7 +19,9 @@ function MultiStepForm() {
             <StepItem stepNumber={4}>Your Info</StepItem>
           </StepsList>
         </StepsProgress>
-        <StepBox />
+        <StepBox>
+          <Outlet />
+        </StepBox>
       </div>
     </MultiStepFormProvider>
   );

@@ -45,9 +45,11 @@
   /*--spacing-400: 2rem; /* 32px */
   /*--spacing-500: 2.5rem; /* 40px */
   /*--spacing-700: 3.5rem; /* 56px */
+
+  --tw-duration: 300ms;
 }
 
-@utility test-preset-1 {
+@utility text-preset-1 {
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
