@@ -1,11 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { Outlet } from "react-router";
 import StepBox from "./StepBox";
 import StepItem from "./StepItem";
 import StepsList from "./StepsList";
 import StepsProgress from "./StepsProgress";
-import { MultiStepFormProvider } from "../contexts/MultiStepFormContext";
-import FormNavigation from "./FormNavigation";
-import { Outlet, useLocation, useNavigate } from "react-router";
 
 function MultiStepForm() {
   // const navigate = useNavigate();
@@ -16,21 +13,19 @@ function MultiStepForm() {
   // }, []);
 
   return (
-    <MultiStepFormProvider>
-      <div className="contents rounded-[.625rem]">
-        <StepsProgress>
-          <StepsList>
-            <StepItem stepNumber={1}>Your Info</StepItem>
-            <StepItem stepNumber={2}>Your Info</StepItem>
-            <StepItem stepNumber={3}>Your Info</StepItem>
-            <StepItem stepNumber={4}>Your Info</StepItem>
-          </StepsList>
-        </StepsProgress>
-        <StepBox>
-          <Outlet />
-        </StepBox>
-      </div>
-    </MultiStepFormProvider>
+    <div className="contents rounded-[.625rem]">
+      <StepsProgress>
+        <StepsList>
+          <StepItem stepNumber={1}>Your Info</StepItem>
+          <StepItem stepNumber={2}>Your Info</StepItem>
+          <StepItem stepNumber={3}>Your Info</StepItem>
+          <StepItem stepNumber={4}>Your Info</StepItem>
+        </StepsList>
+      </StepsProgress>
+      <StepBox>
+        <Outlet />
+      </StepBox>
+    </div>
   );
 }
 

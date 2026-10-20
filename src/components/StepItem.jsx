@@ -1,8 +1,9 @@
-import { useMultiStepFormContext } from "../contexts/MultiStepFormContext";
 import clsx from "clsx";
+import { useSelector } from "react-redux";
+import { selectCurrentStep } from "../store/FormSlice";
 
 function StepItem({ stepNumber = 1, children }) {
-  const { currentStep } = useMultiStepFormContext();
+  const currentStep = useSelector(selectCurrentStep);
   const isActive = stepNumber === currentStep + 1;
 
   return (

@@ -1,10 +1,16 @@
 import { useForm } from "react-hook-form";
-import StepHeader from "../components/StepHeader";
-import FormInput from "../components/FormInput";
-import StepDetails from "../components/StepDetails";
-import FormNavigation from "../components/FormNavigation";
-import { useMultiStepFormContext } from "../contexts/MultiStepFormContext";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import FormInput from "../components/FormInput";
+import FormNavigation from "../components/FormNavigation";
+import StepDetails from "../components/StepDetails";
+import StepHeader from "../components/StepHeader";
+import {
+  nextStep,
+  personalInfoSubmitted,
+  selectCurrentStep,
+  selectPersonalInfo,
+} from "../store/FormSlice";
 import { FORM_STEPS } from "../utils/constants";
 
 const emailRegex =
@@ -13,17 +19,22 @@ const phoneRegex =
   /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/;
 
 function Step1() {
-  const { register, handleSubmit, formState } = useForm();
-  const { errors } = formState;
-  const { currentStep, handleIncrementStep } = useMultiStepFormContext();
+  const currentStep = useSelector(selectCurrentStep);
+  const formInfo = useSelector(selectPersonalInfo);
+
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: formInfo,
+  });
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { errors } = formState;
   const nextPage = FORM_STEPS[currentStep + 1]?.pathName;
 
-  function onSubmit() {
+  function onSubmit({ name, email, phoneNumber }) {
     if (Object.keys(errors).length) return;
 
-    handleIncrementStep();
+    dispatch(personalInfoSubmitted({ name, email, phoneNumber }));
     if (nextPage) navigate(nextPage);
   }
 
@@ -53,7 +64,6 @@ function Step1() {
           })}
           placeholder="e.g. Stephen King"
           error={errors?.name?.message}
-          defaultValue="testing out"
         />
         <FormInput
           label="Email Address"
@@ -71,7 +81,6 @@ function Step1() {
           })}
           placeholder="e.g. stephenking@lorem.com"
           error={errors?.email?.message}
-          defaultValue="simeon@gmail.com"
         />
         <FormInput
           label="Phone Number"
@@ -89,7 +98,6 @@ function Step1() {
           })}
           placeholder="e.g. +32 488 61 75 50"
           error={errors?.phoneNumber?.message}
-          defaultValue="+32488617550"
         />
       </StepDetails>
       <FormNavigation />

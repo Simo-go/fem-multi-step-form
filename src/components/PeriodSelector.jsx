@@ -1,9 +1,11 @@
 import clsx from "clsx";
 import { useWatch } from "react-hook-form";
 import Selector from "./Selector";
+import { useSelector } from "react-redux";
+import { selectPeriod } from "../store/FormSlice";
 
-function PeriodSelector({ control, ...props }) {
-  const isYearly = useWatch({ control, name: "period" });
+function PeriodSelector(props) {
+  const isYearly = useWatch({ control: props.control, name: "period" });
 
   return (
     <div className="flex items-center justify-center gap-6 rounded-lg bg-blue-50 py-3.5">
