@@ -36,6 +36,7 @@ function Summary() {
               className="text-preset-4 text-grey-500"
               to="/plans"
               onClick={handlePlanChangeClick}
+              replace
             >
               Change
             </Link>
