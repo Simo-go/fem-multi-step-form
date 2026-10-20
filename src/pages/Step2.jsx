@@ -8,7 +8,11 @@ import StepDetails from "../components/StepDetails";
 import StepHeader from "../components/StepHeader";
 import { useMultiStepFormContext } from "../contexts/MultiStepFormContext";
 import { useDispatch, useSelector } from "react-redux";
-import { nextStep, selectPlanDetails } from "../store/FormSlice";
+import {
+  nextStep,
+  planDetailsSubmitted,
+  selectPlanDetails,
+} from "../store/FormSlice";
 import { DevTool } from "@hookform/devtools";
 
 function Step2() {
@@ -19,9 +23,9 @@ function Step2() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  function onSubmit() {
+  function onSubmit({ plan, period }) {
     navigate("/add-ons");
-    dispatch(nextStep());
+    dispatch(planDetailsSubmitted({ plan, period }));
   }
 
   return (
