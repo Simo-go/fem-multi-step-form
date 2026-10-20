@@ -26,10 +26,25 @@ export const formSlice = createSlice({
       state.email = action.payload.email;
       state.phoneNumber = action.payload.phoneNumber;
     },
+    planDetailsSubmitted: (state, action) => {
+      state.currentStep++;
+      state.period = action.payload.period;
+      state.plan = action.payload.plan;
+    },
+    addOnsSubmitted: (state, action) => {
+      state.currentStep++;
+      state.addOns = action.payload;
+    },
   },
 });
 
-export const { nextStep, prevStep, personalInfoSubmitted } = formSlice.actions;
+export const {
+  nextStep,
+  prevStep,
+  personalInfoSubmitted,
+  planDetailsSubmitted,
+  addOnsSubmitted,
+} = formSlice.actions;
 
 export default formSlice.reducer;
 
@@ -47,3 +62,4 @@ export const selectPlanDetails = createSelector(
   selectPlan,
   (period, plan) => ({ period, plan }),
 );
+export const selectAddOns = (state) => state.form.addOns;
