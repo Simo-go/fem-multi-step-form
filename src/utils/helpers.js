@@ -1,4 +1,5 @@
-import { FORM_STEPS } from "./constants";
+import { FORM_STEPS, YEARLY_DISCOUNT } from "./constants";
+import { PLAN_PRICE_MAP_MONTHLY } from "./constants";
 
 export function getPrevPagePath(step) {
   // thank you page or doesn't exist
@@ -7,4 +8,19 @@ export function getPrevPagePath(step) {
   if (currPage === "confirmation" || !prevPage) return;
 
   return prevPage;
+}
+
+export function convertMonthlyToYearly(obj) {
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [
+      key,
+      Math.ceil(value * 12 - (value * YEARLY_DISCOUNT) / 100),
+    ]),
+  );
+}
+
+export function getPlanPrice(id, period) {
+  if (period === "monthly") return PLAN_PRICE_MAP_MONTHLY[id];
+  if (period === "yearly")
+    return convertMonthlyToYearly(PLAN_PRICE_MAP_MONTHLY)[id];
 }

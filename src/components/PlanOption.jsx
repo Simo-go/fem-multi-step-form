@@ -1,4 +1,9 @@
-function PlanOption({ iconPath = "", price = "", title = "", ...inputProps }) {
+import { PLAN_PRICE_MAP_MONTHLY } from "../utils/constants";
+import { getPlanPrice } from "../utils/helpers";
+
+function PlanOption({ period, iconPath = "", title = "", ...inputProps }) {
+  const planPrice = getPlanPrice(inputProps.id, period);
+
   return (
     <li className="group">
       <input className="peer sr-only" type="radio" {...inputProps} />
@@ -12,7 +17,7 @@ function PlanOption({ iconPath = "", price = "", title = "", ...inputProps }) {
         <div>
           <h2 className="text-preset-3-medium text-blue-950">{title}</h2>
           <span className="block text-preset-4 text-grey-500">
-            {"$" + price}/mo
+            {"$" + planPrice}/{period === "monthly" ? "mo" : "yr"}
           </span>
         </div>
       </label>

@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router";
 import FormNavigation from "../components/FormNavigation";
 import PeriodSelector from "../components/PeriodSelector";
@@ -17,9 +17,11 @@ import { DevTool } from "@hookform/devtools";
 
 function Step2() {
   const planDetails = useSelector(selectPlanDetails);
+
   const { register, handleSubmit, control, getValues } = useForm({
     defaultValues: planDetails,
   });
+  const period = useWatch({ control, name: "period" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -37,31 +39,31 @@ function Step2() {
         <StepDetails>
           <PlanOptions>
             <PlanOption
+              period={period}
               iconPath="./images/icon-arcade.svg"
-              price={9}
               title="Arcade"
               id="arcade"
               value="arcade"
               {...register("plan")}
             />
             <PlanOption
+              period={period}
               iconPath="./images/icon-advanced.svg"
-              price={12}
               title="Advanced"
               id="advanced"
               value="advanced"
               {...register("plan")}
             />
             <PlanOption
+              period={period}
               iconPath="./images/icon-pro.svg"
-              price={15}
               title="Pro"
               id="pro"
               value="pro"
               {...register("plan")}
             />
           </PlanOptions>
-          <PeriodSelector control={control} name="period" />
+          <PeriodSelector period={period} control={control} name="period" />
         </StepDetails>
         <FormNavigation />
       </form>

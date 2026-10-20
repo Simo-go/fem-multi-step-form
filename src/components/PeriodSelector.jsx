@@ -1,17 +1,12 @@
 import clsx from "clsx";
-import { useWatch } from "react-hook-form";
 import Selector from "./Selector";
-import { useSelector } from "react-redux";
-import { selectPeriod } from "../store/FormSlice";
 
-function PeriodSelector(props) {
-  const isYearly = useWatch({ control: props.control, name: "period" });
-
+function PeriodSelector({ period, ...props }) {
   return (
     <div className="flex items-center justify-center gap-6 rounded-lg bg-blue-50 py-3.5">
       <span
         className={clsx(
-          `${isYearly ? "text-grey-500" : "text-blue-950"}`,
+          `${period === "yearly" ? "text-grey-500" : "text-blue-950"}`,
           "text-preset-4-medium",
         )}
       >
@@ -20,7 +15,7 @@ function PeriodSelector(props) {
       <Selector {...props} />
       <span
         className={clsx(
-          `${!isYearly ? "text-grey-500" : "text-blue-950"}`,
+          `${period === "monthly" ? "text-grey-500" : "text-blue-950"}`,
           "text-preset-4-medium",
         )}
       >
