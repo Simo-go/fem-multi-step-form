@@ -14,6 +14,9 @@ export const formSlice = createSlice({
   name: "form",
   initialState: initialState,
   reducers: {
+    planChangeClicked: (state) => {
+      state.currentStep = 1;
+    },
     nextStep: (state) => {
       state.currentStep++;
     },
@@ -44,6 +47,7 @@ export const {
   personalInfoSubmitted,
   planDetailsSubmitted,
   addOnsSubmitted,
+  planChangeClicked,
 } = formSlice.actions;
 
 export default formSlice.reducer;
@@ -63,3 +67,8 @@ export const selectPlanDetails = createSelector(
   (period, plan) => ({ period, plan }),
 );
 export const selectAddOns = (state) => state.form.addOns;
+export const selectSummaryInfo = createSelector(
+  selectPlanDetails,
+  selectAddOns,
+  (planDetails, addOns) => ({ ...planDetails, addOns }),
+);

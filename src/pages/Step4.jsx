@@ -1,5 +1,15 @@
+import StepHeader from "../components/StepHeader";
+import Summary from "../components/Summary";
+
 function Step4() {
-  return <div>step 4</div>;
+  return (
+    <>
+      <StepHeader content="Double-check everything looks OK before confirming.">
+        Finishing up
+      </StepHeader>
+      <Summary />
+    </>
+  );
 }
 
 export default Step4;

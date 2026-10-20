@@ -29,8 +29,11 @@ function FormNavigation({ reset }) {
         </FormNavButton>
       )}
       {nextPage && (
-        <FormNavButton className="ml-auto" variation="primary">
-          Next Step
+        <FormNavButton
+          className="ml-auto"
+          variation={currentStep === 3 ? "secondary" : "primary"}
+        >
+          {currentStep === 3 ? "Confirm" : "Next Step"}
         </FormNavButton>
       )}
     </div>
