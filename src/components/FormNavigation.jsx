@@ -4,6 +4,7 @@ import { FORM_STEPS } from "../utils/constants";
 import FormNavButton from "./FormNavButton";
 import { useDispatch, useSelector } from "react-redux";
 import { prevStep, selectCurrentStep } from "../store/FormSlice";
+import { getPrevPagePath } from "../utils/helpers";
 
 function FormNavigation({ reset }) {
   const currentStep = useSelector(selectCurrentStep);
@@ -11,7 +12,7 @@ function FormNavigation({ reset }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const prevPage = FORM_STEPS[currentStep - 1]?.pathName;
+  const prevPage = getPrevPagePath(currentStep);
   const nextPage = FORM_STEPS[currentStep + 1]?.pathName;
 
   function handleClickBack() {
