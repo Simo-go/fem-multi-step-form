@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import FormInput from "../components/FormInput";
-import FormNavigation from "../components/FormNavigation";
 import StepDetails from "../components/StepDetails";
 import StepHeader from "../components/StepHeader";
 import {
@@ -99,7 +98,6 @@ function Step1() {
           error={errors?.phoneNumber?.message}
         />
       </StepDetails>
-      <FormNavigation />
     </form>
   );
 }

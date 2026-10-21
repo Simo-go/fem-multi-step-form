@@ -47,6 +47,8 @@
   /*--spacing-700: 3.5rem; /* 56px */
 
   --tw-duration: 300ms;
+
+  --breakpoint-sm: 36rem; /* 576px */
 }
 
 @utility text-preset-1 {
