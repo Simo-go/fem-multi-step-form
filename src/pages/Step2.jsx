@@ -68,7 +68,6 @@ function Step2() {
           </PlanOptions>
           <PeriodSelector period={period} control={control} name="period" />
         </StepDetails>
-        <FormNavigation />
       </form>
     </>
   );

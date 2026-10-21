@@ -12,7 +12,7 @@ function NavButton({ className, variation, children, ...props }) {
     <button
       {...props}
       className={clsx(
-        "cursor-pointer rounded-sm px-4 py-2.5 text-preset-3-medium transition-all focus-visible:outline-3 focus-visible:outline-offset-2 md:py-3.5 md:text-preset-3-medium",
+        "cursor-pointer rounded-sm px-4 py-2.5 text-preset-3-medium transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 md:py-3.5 md:text-preset-3-medium",
         className,
         variations[variation],
       )}

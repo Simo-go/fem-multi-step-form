@@ -4,8 +4,9 @@ import { moveBackClicked, selectCurrentStep } from "../store/FormSlice";
 import { getPagePath } from "../utils/helpers";
 import NavButton from "./NavButton";
 import { FORM_STEPS } from "../utils/constants";
+import { clear } from "redux-localstorage-simple";
 
-function FormNavigation({ onNext }) {
+function FormNavigation() {
   const currentStep = useSelector(selectCurrentStep);
 
   const dispatch = useDispatch();
@@ -17,6 +18,12 @@ function FormNavigation({ onNext }) {
   function handleClickBack() {
     dispatch(moveBackClicked());
     navigate(prevPage);
+  }
+
+  function handleConfirm() {
+    if (currentStep !== 3) return;
+    navigate("/confirmation");
+    clear(); // clearing local storage data
   }
 
   return (
@@ -31,7 +38,7 @@ function FormNavigation({ onNext }) {
         form={currentStep !== 3 && FORM_STEPS[currentStep].pathName.slice(1)}
         className="ml-auto"
         variation={currentStep === 3 ? "secondary" : "primary"}
-        onClick={onNext}
+        onClick={handleConfirm}
       >
         {currentStep === 3 ? "Confirm" : "Next Step"}
       </NavButton>

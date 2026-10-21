@@ -60,7 +60,6 @@ function Step3() {
             {...register("addOns")}
           />
         </AddOnOptions>
-        <FormNavigation />
       </form>
     </>
   );
