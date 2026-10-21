@@ -1,4 +1,3 @@
-import { PLAN_PRICE_MAP_MONTHLY } from "../utils/constants";
 import { getPlanPrice } from "../utils/helpers";
 
 function PlanOption({ period, iconPath = "", title = "", ...inputProps }) {

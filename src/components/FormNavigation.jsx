@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { moveBackClicked, selectCurrentStep } from "../store/FormSlice";
+import {
+  confirmed,
+  moveBackClicked,
+  selectCurrentStep,
+} from "../store/FormSlice";
+import { FORM_STEPS } from "../utils/constants";
 import { getPagePath } from "../utils/helpers";
 import NavButton from "./NavButton";
-import { FORM_STEPS } from "../utils/constants";
-import { clear } from "redux-localstorage-simple";
 
 function FormNavigation() {
   const currentStep = useSelector(selectCurrentStep);
@@ -22,9 +25,11 @@ function FormNavigation() {
 
   function handleConfirm() {
     if (currentStep !== 3) return;
-    navigate("/confirmation");
-    clear(); // clearing local storage data
+    navigate("/confirmation", { replace: true });
+    dispatch(confirmed());
   }
+
+  if (currentStep === 4) return null;
 
   return (
     <div className="opac-90 fixed bottom-0 left-0 flex w-full gap-2 bg-white p-4 opacity-90 md:static md:shrink-0 md:p-0">

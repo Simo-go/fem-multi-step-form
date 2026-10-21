@@ -35,28 +35,36 @@ export const formSlice = createSlice({
       state.currentStep--;
     },
     personalInfoSubmitted: (state, action) => {
+      state.currentStep === state.highestUnlockedStep &&
+        state.highestUnlockedStep++;
       state.currentStep++;
-      state.highestUnlockedStep++;
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.phoneNumber = action.payload.phoneNumber;
     },
     planDetailsSubmitted: (state, action) => {
+      state.currentStep === state.highestUnlockedStep &&
+        state.highestUnlockedStep++;
       state.currentStep++;
-      state.highestUnlockedStep++;
       state.period = action.payload.period;
       state.plan = action.payload.plan;
     },
     addOnsSubmitted: (state, action) => {
+      state.currentStep === state.highestUnlockedStep &&
+        state.highestUnlockedStep++;
       state.currentStep++;
-      state.highestUnlockedStep++;
       state.addOns = action.payload;
     },
-    confirmed: (state) => {
+    reset: () => {
       return initialState;
     },
     navigatedToOtherStep: (state, action) => {
       state.currentStep = action.payload;
+    },
+    confirmed: (state) => {
+      state.currentStep === state.highestUnlockedStep &&
+        state.highestUnlockedStep++;
+      state.currentStep++;
     },
   },
 });
@@ -70,6 +78,7 @@ export const {
   confirmed,
   moveBackClicked,
   navigatedToOtherStep,
+  reset,
 } = formSlice.actions;
 
 export default formSlice.reducer;
