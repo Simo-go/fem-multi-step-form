@@ -50,6 +50,7 @@
   --tw-duration: 300ms;
 
   --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-lg: 57rem; /* 912px */
 }
 
 @utility text-preset-1 {

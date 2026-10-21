@@ -23,7 +23,7 @@ function Summary() {
 
   return (
     <div aria-label="summary">
-      <ul className="mb-6 flex flex-col gap-4 rounded-lg bg-blue-50 p-4">
+      <ul className="mb-6 flex flex-col gap-4 rounded-lg bg-blue-50 p-4 sm:max-md:mb-5 md:mb-8">
         <li>
           <SummaryItem
             variant="plan"
