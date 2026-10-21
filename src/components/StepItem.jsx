@@ -1,6 +1,4 @@
 import clsx from "clsx";
-import { useSelector } from "react-redux";
-import { selectCurrentStep } from "../store/FormSlice";
 import { useLocation } from "react-router";
 import { FORM_STEPS } from "../utils/constants";
 

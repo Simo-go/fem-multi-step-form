@@ -5,10 +5,16 @@ import AddOnOption from "../components/AddOnOption";
 import AddOnOptions from "../components/AddOnOptions";
 import FormNavigation from "../components/FormNavigation";
 import StepHeader from "../components/StepHeader";
-import { addOnsSubmitted, selectAddOns } from "../store/FormSlice";
+import {
+  addOnsSubmitted,
+  selectAddOns,
+  selectCurrentStep,
+} from "../store/FormSlice";
+import { FORM_STEPS } from "../utils/constants";
 
 function Step3() {
   const addOns = useSelector(selectAddOns);
+  const currentStep = useSelector(selectCurrentStep);
 
   const { register, handleSubmit } = useForm({
     defaultValues: { addOns },
@@ -23,7 +29,11 @@ function Step3() {
 
   return (
     <>
-      <form aria-label="pick add-ons" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id={FORM_STEPS[currentStep].pathName.slice(1)}
+        aria-label="pick add-ons"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <StepHeader content="Add-ons help enhance your gaming experience.">
           Pick add-ons
         </StepHeader>

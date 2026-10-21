@@ -7,10 +7,16 @@ import PlanOption from "../components/PlanOption";
 import PlanOptions from "../components/PlanOptions";
 import StepDetails from "../components/StepDetails";
 import StepHeader from "../components/StepHeader";
-import { planDetailsSubmitted, selectPlanDetails } from "../store/FormSlice";
+import {
+  planDetailsSubmitted,
+  selectCurrentStep,
+  selectPlanDetails,
+} from "../store/FormSlice";
+import { FORM_STEPS } from "../utils/constants";
 
 function Step2() {
   const planDetails = useSelector(selectPlanDetails);
+  const currentStep = useSelector(selectCurrentStep);
 
   const { register, handleSubmit, control, getValues } = useForm({
     defaultValues: planDetails,
@@ -26,7 +32,10 @@ function Step2() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id={FORM_STEPS[currentStep].pathName.slice(1)}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <StepHeader content="You have the option of monthly or yearly billing.">
           Select your plan
         </StepHeader>

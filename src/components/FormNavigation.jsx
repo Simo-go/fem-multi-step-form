@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { moveBackClicked, selectCurrentStep } from "../store/FormSlice";
 import { getPagePath } from "../utils/helpers";
 import NavButton from "./NavButton";
+import { FORM_STEPS } from "../utils/constants";
 
 function FormNavigation({ onNext }) {
   const currentStep = useSelector(selectCurrentStep);
@@ -27,6 +28,7 @@ function FormNavigation({ onNext }) {
       )}
 
       <NavButton
+        form={currentStep !== 3 && FORM_STEPS[currentStep].pathName.slice(1)}
         className="ml-auto"
         variation={currentStep === 3 ? "secondary" : "primary"}
         onClick={onNext}

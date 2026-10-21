@@ -35,9 +35,14 @@ function Step1() {
     dispatch(personalInfoSubmitted({ name, email, phoneNumber }));
     if (nextPage) navigate(nextPage);
   }
+  console.log(currentStep);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form
+      id={FORM_STEPS[currentStep].pathName.slice(1)}
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+    >
       <StepHeader content="Please provide your name, email address, and phone number.">
         Personal info
       </StepHeader>
