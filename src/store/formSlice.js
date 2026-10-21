@@ -1,14 +1,25 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "simeon",
-  email: "simeon@gmail.com",
-  phoneNumber: "+32488617555",
+  name: "",
+  email: "",
+  phoneNumber: "+32",
   plan: "arcade",
   period: "yearly",
   addOns: [],
-  currentStep: 0,
+  currentStep: 0, // currently visited step
+  highestUnlockedStep: 0, // further step touched!
 };
+// const initialState = {
+//   name: "simeon",
+//   email: "simeon@gmail.com",
+//   phoneNumber: "+32488617555",
+//   plan: "arcade",
+//   period: "yearly",
+//   addOns: [],
+//   currentStep: 0, // currently visited step
+//   highestUnlockedStep: 0, // further step touched!
+// };
 
 export const formSlice = createSlice({
   name: "form",
@@ -25,21 +36,27 @@ export const formSlice = createSlice({
     },
     personalInfoSubmitted: (state, action) => {
       state.currentStep++;
+      state.highestUnlockedStep++;
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.phoneNumber = action.payload.phoneNumber;
     },
     planDetailsSubmitted: (state, action) => {
       state.currentStep++;
+      state.highestUnlockedStep++;
       state.period = action.payload.period;
       state.plan = action.payload.plan;
     },
     addOnsSubmitted: (state, action) => {
       state.currentStep++;
+      state.highestUnlockedStep++;
       state.addOns = action.payload;
     },
     confirmed: (state) => {
-      state.currentStep++;
+      return initialState;
+    },
+    navigatedToOtherStep: (state, action) => {
+      state.currentStep = action.payload;
     },
   },
 });
@@ -52,11 +69,14 @@ export const {
   planChangeClicked,
   confirmed,
   moveBackClicked,
+  navigatedToOtherStep,
 } = formSlice.actions;
 
 export default formSlice.reducer;
 
 export const selectCurrentStep = (state) => state.form.currentStep;
+export const selectHighestUnlockedStep = (state) =>
+  state.form.highestUnlockedStep;
 export const selectPersonalInfo = createSelector(
   (state) => state.form.name,
   (state) => state.form.email,
