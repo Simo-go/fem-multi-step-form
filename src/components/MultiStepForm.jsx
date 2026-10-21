@@ -3,6 +3,7 @@ import StepBox from "./StepBox";
 import StepItem from "./StepItem";
 import StepsList from "./StepsList";
 import StepsProgress from "./StepsProgress";
+import { FORM_STEPS } from "../utils/constants";
 
 function MultiStepForm() {
   // const navigate = useNavigate();
@@ -16,10 +17,14 @@ function MultiStepForm() {
     <div className="contents rounded-[.625rem]">
       <StepsProgress>
         <StepsList>
-          <StepItem stepNumber={1}>Your Info</StepItem>
-          <StepItem stepNumber={2}>Your Info</StepItem>
-          <StepItem stepNumber={3}>Your Info</StepItem>
-          <StepItem stepNumber={4}>Your Info</StepItem>
+          {FORM_STEPS.map(
+            (step) =>
+              step.step !== 4 && (
+                <StepItem stepNumber={step.step + 1} key={step.step}>
+                  {step.name.toUpperCase()}
+                </StepItem>
+              ),
+          )}
         </StepsList>
       </StepsProgress>
       <StepBox>

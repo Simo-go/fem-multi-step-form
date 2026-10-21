@@ -1,8 +1,8 @@
 export const FORM_STEPS = [
-  { step: 0, pathName: "/personal-info" },
-  { step: 1, pathName: "/plans" },
-  { step: 2, pathName: "/add-ons" },
-  { step: 3, pathName: "/summary" },
+  { step: 0, pathName: "/personal-info", name: "your info" },
+  { step: 1, pathName: "/plans", name: "select plan" },
+  { step: 2, pathName: "/add-ons", name: "add-ons" },
+  { step: 3, pathName: "/summary", name: "summary" },
   { step: 4, pathName: "/confirmation" },
 ];
 
