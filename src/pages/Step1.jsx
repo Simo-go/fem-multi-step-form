@@ -35,7 +35,6 @@ function Step1() {
     dispatch(personalInfoSubmitted({ name, email, phoneNumber }));
     if (nextPage) navigate(nextPage);
   }
-  console.log(currentStep);
 
   return (
     <form

@@ -1,29 +1,25 @@
-import { useNavigate } from "react-router";
-import StepHeader from "../components/StepHeader";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { reset, selectCurrentStep } from "../store/FormSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { clear } from "redux-localstorage-simple";
+import StepHeader from "../components/StepHeader";
+import { reset } from "../store/FormSlice";
 
 function ThankingMessage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const currentStep = useSelector(selectCurrentStep);
 
   useEffect(
     function () {
       const timerId = setTimeout(() => {
-        console.log("before reset: ", currentStep);
-
         dispatch(reset());
         clear();
-        navigate("/personal-info");
-        console.log("before reset: ", currentStep);
+        navigate("/personal-info", { replace: true });
       }, 5_000);
 
       return () => clearTimeout(timerId);
     },
-    [navigate, dispatch, currentStep],
+    [navigate, dispatch],
   );
 
   return (

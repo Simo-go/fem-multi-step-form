@@ -16,7 +16,6 @@ function FormNavigation() {
   const navigate = useNavigate();
 
   const prevPage = getPagePath(currentStep - 1);
-  console.log(prevPage);
 
   function handleClickBack() {
     dispatch(moveBackClicked());
@@ -40,7 +39,11 @@ function FormNavigation() {
       )}
 
       <NavButton
-        form={currentStep !== 3 && FORM_STEPS[currentStep].pathName.slice(1)}
+        form={
+          currentStep !== 3
+            ? FORM_STEPS[currentStep].pathName.slice(1)
+            : undefined
+        }
         className="ml-auto"
         variation={currentStep === 3 ? "secondary" : "primary"}
         onClick={handleConfirm}

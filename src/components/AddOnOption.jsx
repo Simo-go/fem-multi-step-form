@@ -7,13 +7,12 @@ import { selectPeriod } from "../store/FormSlice";
 function AddOnOption({ title, caption, ...inputProps }) {
   const addOnPrice = useAddOnPrice(inputProps.id);
   const period = useSelector(selectPeriod);
-  console.log(addOnPrice, period);
 
   return (
     <li>
       <label
         htmlFor={inputProps.id}
-        className="flex cursor-pointer items-center gap-4 rounded-lg border border-purple-200 px-4 py-3 transition-all hover:border-purple-600 has-checked:border-purple-600 has-checked:bg-blue-50 md:px-6 md:py-4.5"
+        className="flex cursor-pointer items-center gap-4 rounded-lg border border-purple-200 px-4 py-3 transition-all hover:border-purple-600 has-checked:border-purple-600 has-checked:bg-blue-50 md:px-6 md:py-4.5 [&:has(input:focus-visible)]:outline-1 [&:has(input:focus-visible)]:outline-offset-2 [&:has(input:focus-visible)]:outline-purple-600"
       >
         <Checkbox {...inputProps} />
         <div>

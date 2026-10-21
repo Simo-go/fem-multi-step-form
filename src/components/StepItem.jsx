@@ -1,14 +1,17 @@
 import clsx from "clsx";
 import { useLocation } from "react-router";
 import { FORM_STEPS } from "../utils/constants";
+import { useSelector } from "react-redux";
+import { selectCurrentStep } from "../store/FormSlice";
 
 function StepItem({ stepNumber = 1, children }) {
   const { pathname } = useLocation();
   const activeStep = FORM_STEPS.find(
     (step) => step.pathName === pathname,
   )?.step;
+  const currentStep = useSelector(selectCurrentStep);
 
-  const isActive = stepNumber === activeStep + 1;
+  const isActive = stepNumber === activeStep + 1 || currentStep === 4;
 
   return (
     <li className="flex gap-4">
