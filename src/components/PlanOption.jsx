@@ -9,7 +9,7 @@ function PlanOption({ period, iconPath = "", title = "", ...inputProps }) {
       <input className="peer sr-only" type="radio" {...inputProps} />
       <label
         htmlFor={inputProps?.id || ""}
-        className="flex items-center gap-4 rounded-lg border border-purple-200 px-4 py-5 transition-colors group-hover:border-purple-600 peer-checked:border-purple-600 peer-checked:bg-blue-50"
+        className="flex cursor-pointer items-center gap-4 rounded-lg border border-purple-200 px-4 py-5 transition-colors group-hover:border-purple-600 peer-checked:border-purple-600 peer-checked:bg-blue-50"
       >
         {iconPath && (
           <img src={iconPath} alt="" className="h-10 w-10 shrink-0" />

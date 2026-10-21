@@ -13,7 +13,7 @@ function AddOnOption({ title, caption, ...inputProps }) {
     <li>
       <label
         htmlFor={inputProps.id}
-        className="flex items-center gap-4 rounded-lg border border-purple-200 px-4 py-3 transition-all has-checked:border-purple-600 has-checked:bg-blue-50"
+        className="flex cursor-pointer items-center gap-4 rounded-lg border border-purple-200 px-4 py-3 transition-all hover:border-purple-600 has-checked:border-purple-600 has-checked:bg-blue-50"
       >
         <Checkbox {...inputProps} />
         <div>

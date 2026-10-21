@@ -3,7 +3,7 @@ import clsx from "clsx";
 function NavButton({ className, variation, children, ...props }) {
   const variations = {
     primary: "bg-blue-950 text-white px-4  outline-blue-950 hover:bg-blue-700",
-    outline: "text-grey-500",
+    outline: "text-grey-500 hover:text-blue-950",
     secondary:
       "bg-purple-600 text-white px-8 outline-purple-600 hover:bg-purple-400",
   };
