@@ -23,9 +23,10 @@ function FormUntouchedGuard() {
     // if matching page before reload -> just render
     if (pagePreviousSession == pathname) return;
 
-    const { step: stepToVisit } = FORM_STEPS.find(
+    const stepToVisit = FORM_STEPS.find(
       (step) => step.pathName === pathname,
-    );
+    )?.step;
+    console.log(stepToVisit);
 
     // if form step has already been visited, navigation allowed
     if (stepToVisit < highestUnlockedStep) {

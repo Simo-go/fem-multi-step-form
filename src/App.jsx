@@ -19,6 +19,7 @@ function App() {
             <Route path="add-ons" element={<Step3 />} />
             <Route path="summary" element={<Step4 />} />
             <Route path="confirmation" element={<ThankingMessage />} />
+            <Route path="*" element={<Navigate to="personal-info" replace />} />
           </Route>
         </Route>
       </Routes>
