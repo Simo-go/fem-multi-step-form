@@ -21,7 +21,7 @@ function FormNavigation({ onNext }) {
   return (
     <div className="opac-90 fixed bottom-0 left-0 flex w-full gap-2 bg-white p-4 opacity-90">
       {currentStep !== 0 && (
-        <NavButton onClick={handleClickBack} variation="outline">
+        <NavButton onClick={handleClickBack} variation="outline" type="button">
           Go Back
         </NavButton>
       )}

@@ -1,17 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import AddOnOption from "../components/AddOnOption";
 import AddOnOptions from "../components/AddOnOptions";
 import FormNavigation from "../components/FormNavigation";
 import StepHeader from "../components/StepHeader";
-import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
 import { addOnsSubmitted, selectAddOns } from "../store/FormSlice";
-import { DevTool } from "@hookform/devtools";
 
 function Step3() {
   const addOns = useSelector(selectAddOns);
 
-  const { register, control, handleSubmit } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: { addOns },
   });
   const navigate = useNavigate();
@@ -53,7 +52,6 @@ function Step3() {
         </AddOnOptions>
         <FormNavigation />
       </form>
-      <DevTool control={control} /> {/* set up the dev tool */}
     </>
   );
 }
