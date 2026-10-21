@@ -20,7 +20,7 @@ export const formSlice = createSlice({
     nextStep: (state) => {
       state.currentStep++;
     },
-    prevStep: (state) => {
+    moveBackClicked: (state) => {
       state.currentStep--;
     },
     personalInfoSubmitted: (state, action) => {
@@ -38,16 +38,20 @@ export const formSlice = createSlice({
       state.currentStep++;
       state.addOns = action.payload;
     },
+    confirmed: (state) => {
+      state.currentStep++;
+    },
   },
 });
 
 export const {
   nextStep,
-  prevStep,
   personalInfoSubmitted,
   planDetailsSubmitted,
   addOnsSubmitted,
   planChangeClicked,
+  confirmed,
+  moveBackClicked,
 } = formSlice.actions;
 
 export default formSlice.reducer;

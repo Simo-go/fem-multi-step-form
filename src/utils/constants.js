@@ -1,9 +1,9 @@
 export const FORM_STEPS = [
-  { step: 1, pathName: "/personal-info" },
-  { step: 2, pathName: "/plans" },
-  { step: 3, pathName: "/add-ons" },
-  { step: 4, pathName: "/summary" },
-  { step: 5, pathName: "/confirmation" },
+  { step: 0, pathName: "/personal-info" },
+  { step: 1, pathName: "/plans" },
+  { step: 2, pathName: "/add-ons" },
+  { step: 3, pathName: "/summary" },
+  { step: 4, pathName: "/confirmation" },
 ];
 
 export const ADD_ON_PRICE_MAP_MONTHLY = {

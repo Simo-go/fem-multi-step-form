@@ -6,7 +6,6 @@ import FormNavigation from "../components/FormNavigation";
 import StepDetails from "../components/StepDetails";
 import StepHeader from "../components/StepHeader";
 import {
-  nextStep,
   personalInfoSubmitted,
   selectCurrentStep,
   selectPersonalInfo,

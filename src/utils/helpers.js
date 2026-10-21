@@ -5,13 +5,12 @@ import {
 } from "./constants";
 import { PLAN_PRICE_MAP_MONTHLY } from "./constants";
 
-export function getPrevPagePath(step) {
+export function getPagePath(step) {
   // thank you page or doesn't exist
-  const prevPage = FORM_STEPS[step - 1];
   const currPage = FORM_STEPS[step];
-  if (currPage === "confirmation" || !prevPage) return;
+  if (currPage === "confirmation" || !currPage) return;
 
-  return prevPage;
+  return currPage.pathName;
 }
 
 export function convertMonthlyToYearly(obj) {

@@ -1,4 +1,5 @@
 import { useForm, useWatch } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import FormNavigation from "../components/FormNavigation";
 import PeriodSelector from "../components/PeriodSelector";
@@ -6,14 +7,7 @@ import PlanOption from "../components/PlanOption";
 import PlanOptions from "../components/PlanOptions";
 import StepDetails from "../components/StepDetails";
 import StepHeader from "../components/StepHeader";
-import { useMultiStepFormContext } from "../contexts/MultiStepFormContext";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  nextStep,
-  planDetailsSubmitted,
-  selectPlanDetails,
-} from "../store/FormSlice";
-import { DevTool } from "@hookform/devtools";
+import { planDetailsSubmitted, selectPlanDetails } from "../store/FormSlice";
 
 function Step2() {
   const planDetails = useSelector(selectPlanDetails);

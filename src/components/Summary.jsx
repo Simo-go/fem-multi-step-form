@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import { planChangeClicked, selectSummaryInfo } from "../store/FormSlice";
 import { capitalize, getAddonPrice, getPlanPrice } from "../utils/helpers";
 import SummaryItem from "./SummaryItem";
-import FormNavigation from "./FormNavigation";
 
 function Summary() {
   const summaryInfo = useSelector(selectSummaryInfo);
@@ -66,7 +65,6 @@ function Summary() {
           periodShort={periodShort}
         />
       </div>
-      <FormNavigation />
     </div>
   );
 }
