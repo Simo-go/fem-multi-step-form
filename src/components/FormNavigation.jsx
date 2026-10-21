@@ -10,8 +10,6 @@ function FormNavigation({ onNext }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  if (currentStep === 4) return null;
-
   const prevPage = getPagePath(currentStep - 1);
   console.log(prevPage);
 

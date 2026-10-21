@@ -13,11 +13,7 @@ function Step4() {
   const navigate = useNavigate();
 
   function handleConfirm() {
-    // increment current step
-
-    // navigate to next page
-    const nextPage = getPagePath(currentStep);
-    navigate(nextPage);
+    navigate("/confirmation");
   }
 
   return (

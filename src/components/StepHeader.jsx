@@ -1,6 +1,8 @@
-function StepHeader({ children, content = "" }) {
+import clsx from "clsx";
+
+function StepHeader({ children, content = "", className }) {
   return (
-    <header className="mb-6">
+    <header className={clsx("mb-6", className)}>
       <h1 className="mb-2 text-preset-2 text-blue-950">{children}</h1>
       {content && <p className="text-preset-3 text-grey-500">{content}</p>}
     </header>
